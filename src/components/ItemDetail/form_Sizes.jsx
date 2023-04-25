@@ -5,8 +5,8 @@ export const Form_Size = () => {
     let {Id, Category, Name, Size, Price, Brand, Stock, Picture } = products[10]
 
     return(
-        <form>
-            <label className="text-black text-2xl">Talle: </label>
+        <form className="mt-4 mb-4">
+            <label className="text-black text-2xl rounded bg-white border-2 border-black">Talle: </label>
             <select className="ml-3 text-2xl">
                 <option>{Size.at(0)}{Size.at(1)}</option>
                 <option>{Size.at(3)}{Size.at(4)}</option>

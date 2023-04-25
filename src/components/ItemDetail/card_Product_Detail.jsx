@@ -1,27 +1,27 @@
 import { useState } from "react"
-import { products } from "../../Data/products"
 import { Form_Size } from "./form_Sizes"
 import {Quantity_Button} from "./quantity_Button"
 import {Buy_Button} from "../BuyButton/BuyButton"
-export const Item_Detial = (products) => {
+export const Item_Detail = ({products}) => {
 
     let {Id, Category, Name, Size, Price, Brand, Stock, Picture } = products
-
+    console.log(Picture)
+    
     const [principalPicture, setPrincipalPicture] = useState(Picture[0])
 
     return(
-        <div className="border-4 border-black shadow-2xl shadow-black h-full w-2/3 bg-white mt-10 mb-10 ml-20 mr-20">
+        <div className="border-4 border-black shadow-2xl shadow-black h-full w-2/3 bg-emerald-200 mt-10 mb-10 ml-20 mr-20">
 
             <div className="flex">
             <img className="w-[410px] p-1 justify-col" src={principalPicture}></img>
             <ul className="justify-bewteen items-center">
-                <li><h1 className="text-7xl font-sans">{Name}</h1></li>
-                <li><h1 className="text-4xl">Precio: {Price}</h1></li>
+                <li><h1 className="text-5xl font-sans underline">{Name}</h1></li>
+                <li><h1 className="text-4xl mt-6 mb-4">Precio: ${Price}</h1></li>
                 <Quantity_Button stock={Stock} onAdd={(quantity) => console.log('Cantidad agregdada', quantity)}/>
-                <Form_Size/>
-                <Buy_Button/>
-                <li><h2 className="text-2xl">Marca: {Brand}</h2></li>
-                <li><h2 className="text-2xl">Categoria: {Category}</h2></li>
+                <Form_Size className="mt-4 mb-4"/>
+                <Buy_Button className="mt-4"/>
+                <li><h2 className="text-2xl mt-4">Marca: {Brand}</h2></li>
+                <li><h2 className="text-2xl mt-4">Categoria: {Category}</h2></li>
             </ul>
 
             </div>

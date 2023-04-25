@@ -1,9 +1,11 @@
-export const Item_List_Container = ({ encabezado }) => {
+import { useActionData, useParams } from "react-router-dom"
+import { Products_Show } from "../ProductsShow/Products_Show"
+export const Item_List_Container = (encabezado) => {
 
     return (
 
         <div>
-            <h1 className="flex justify-center mt-10 font-serif text-4xl">{encabezado}</h1>
+            <Products_Show/>
         </div>
 
     )

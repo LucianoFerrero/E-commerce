@@ -1,8 +1,8 @@
 import { Buy_Button } from "../BuyButton/BuyButton"
+import { Link } from "react-router-dom"
 
 export const Products_Map = ({data}) => {
 
-    console.log("data", data)
     return(
 
         <div className="flex flex-wrap justify-center items-center">
@@ -13,9 +13,9 @@ export const Products_Map = ({data}) => {
                             
 
                             <div class="w-72 bg-slate-100  shadow-2xl shadow-ice">
-                                <div>
-                                    <img className="p-2" src={Picture}/>
-                                </div>
+                                <Link to={`/products/detail/${Id}`}>
+                                    <img className="p-2" src={Picture[0]}/>
+                                </Link>
                                 <div class="px-5 pb-5">
                                     <a href="#">
                                     <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-black">{Name}</h5>

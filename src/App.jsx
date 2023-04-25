@@ -11,13 +11,13 @@ function App() {
 
   return (
     <div className='bg-white flex flex-col justify-center'> 
-        <Nav_Bar/>
         <BrowserRouter>
+          <Nav_Bar/>
           <Routes>
-            <Route path='/' element={<Item_List_Container/>}/> 
-            <Route path='/products' element={<Products_Show/>}/>
-            <Route path='/products/detail' element={<Item_Detail_Container/>}/>
-            <Route path='*' element={ <Navigate to='/'/>} />
+            <Route path='/home' element={<Item_List_Container/>}/> 
+            <Route path='/products/category/:category' element={<Item_List_Container/>}/>
+            <Route path='/products/detail/:pId' element={<Item_Detail_Container/>}/>
+            <Route path='*' element={ <Navigate to='/home'/>} />
           </Routes>
         </BrowserRouter>
         
