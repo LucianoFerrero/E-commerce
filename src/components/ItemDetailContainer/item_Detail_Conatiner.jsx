@@ -4,7 +4,7 @@ import { products } from "../../Data/products"
 import { useParams } from "react-router-dom"
 export const Item_Detail_Container = () => {
 
-    const [deatilProducts, setDetailProducts ] = useState(null)
+    const [detailProducts, setDetailProducts ] = useState(null)
 
     const { pId } = useParams()
     console.log(pId)
@@ -15,8 +15,6 @@ export const Item_Detail_Container = () => {
 
     }, [pId])
 
-    console.log(products)
-
     if(!deatilProducts){
         return(<h1>Loading</h1>)
     }
@@ -24,8 +22,7 @@ export const Item_Detail_Container = () => {
     return(
         <div className="w-full h-full flex justify-center">
 
-            <Item_Detail products={deatilProducts}/>
-        
+            <Item_Detail products={detailProducts} product={setDetailProducts}/>
         </div>
     )
 

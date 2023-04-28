@@ -2,12 +2,16 @@ import { useState } from "react"
 import { Form_Size } from "./form_Sizes"
 import {Quantity_Button} from "./quantity_Button"
 import {Buy_Button} from "../BuyButton/BuyButton"
-export const Item_Detail = ({products}) => {
+import { useContext } from "react"
+import { CartContext } from "../../Contexts/CartContext"
+
+export const Item_Detail = ({products}, {product}) => {
 
     let {Id, Category, Name, Size, Price, Brand, Stock, Picture } = products
-    console.log(Picture)
     
     const [principalPicture, setPrincipalPicture] = useState(Picture[0])
+
+    const { addToCart } = useContext(CartContext);
 
     return(
         <div className="border-4 border-black shadow-2xl shadow-black h-full w-2/3 bg-emerald-200 mt-10 mb-10 ml-20 mr-20">
@@ -19,7 +23,7 @@ export const Item_Detail = ({products}) => {
                 <li><h1 className="text-4xl mt-6 mb-4">Precio: ${Price}</h1></li>
                 <Quantity_Button stock={Stock} onAdd={(quantity) => console.log('Cantidad agregdada', quantity)}/>
                 <Form_Size className="mt-4 mb-4"/>
-                <Buy_Button className="mt-4"/>
+                <button onClick={() => addToCart({product})} href="#" class="mt-4 text-black bg-ice hover:bg-ice border-2 border-black font-medium  text-sm px-5 py-2.5 text-center dark:hover:ice hover:text-white dark:focus:ice">Agregar</button>
                 <li><h2 className="text-2xl mt-4">Marca: {Brand}</h2></li>
                 <li><h2 className="text-2xl mt-4">Categoria: {Category}</h2></li>
             </ul>

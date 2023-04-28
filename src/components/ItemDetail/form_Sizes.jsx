@@ -1,7 +1,6 @@
 import { products } from "../../Data/products"
 export const Form_Size = () => {
 
-    console.log(products)
     let {Id, Category, Name, Size, Price, Brand, Stock, Picture } = products[10]
 
     return(
