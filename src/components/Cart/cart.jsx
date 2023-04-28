@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { CartContext } from '../../Contexts/CartContext';
 
 export const Cart = () => {
@@ -9,7 +9,7 @@ export const Cart = () => {
         <ul>
         {cartItems.map((item) => (
             <li key={item.Id}>
-            <h1>{item.Name}</h1> {item.Price}
+            <a>{item.Name}{item.Price}</a>
             <button onClick={() => removeFromCart(item)}>Remove</button>
             </li>
         ))}
@@ -17,5 +17,4 @@ export const Cart = () => {
     </div>
   );
 
-  console.log(item.Price)
 };

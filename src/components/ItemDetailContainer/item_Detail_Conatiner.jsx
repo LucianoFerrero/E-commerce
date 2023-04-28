@@ -15,14 +15,14 @@ export const Item_Detail_Container = () => {
 
     }, [pId])
 
-    if(!deatilProducts){
+    if(!detailProducts){
         return(<h1>Loading</h1>)
     }
 
     return(
         <div className="w-full h-full flex justify-center">
 
-            <Item_Detail products={detailProducts} product={setDetailProducts}/>
+            <Item_Detail products={detailProducts}/>
         </div>
     )
 
