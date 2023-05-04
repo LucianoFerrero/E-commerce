@@ -1,29 +1,59 @@
 import { useEffect, useState } from "react"
 import { Item_Detail } from "../ItemDetail/Card_Product_Detail"
-import { products } from "../../Data/products"
 import { useParams } from "react-router-dom"
+import { Loading } from "../Loading.jsx/Loading"
+import { loadProducts } from "../ProductsShow/loadProducts" 
+import { collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, where } from "firebase/firestore"
+
 export const Item_Detail_Container = () => {
 
-    const [detailProducts, setDetailProducts ] = useState(null)
+    const [productos, setProductos] = useState([])
+    const [producto, setProducto] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+
 
     const { pId } = useParams()
     console.log(pId)
 
-    useEffect(()=>{
+    // useEffect(()=>{
+    //     setDetailProducts(products.find((product) => product.Id == pId))
+    //     loadProducts()
+    //     .finally( () => setIsLoAding(false))
+    // }, [pId])
 
-        setDetailProducts(products.find((product) => product.Id == pId))
+    useEffect(() => {
+        const dbFirestore = getFirestore()
+        const queryCollection = collection(dbFirestore, 'productos', pId)
 
-    }, [pId])
+        const queryCollectionFiltered = query(
+            queryCollection,
+            where('id', '===', pId)
+        ) 
 
-    if(!detailProducts){
-        return(<h1>Loading</h1>)
+        getDocs(queryCollectionFiltered)
+            .then(res => setProducto( { id: res.id, ...res.data() } ))
+            .catch( error => console.log(error) )
+            .finally(() => setIsLoading(false))
+    }, [])
+
+    console.log(producto)
+
+    if(!producto){
+        <Loading/>
     }
 
     return(
-        <div className="w-full h-full flex justify-center">
-
-            <Item_Detail products={detailProducts}/>
-        </div>
+        <> 
+            {
+                isLoading ?
+                    <Loading/>
+                : 
+                    <div className="w-full h-full flex justify-center">
+                        <Item_Detail products={producto}/>
+                    </div>
+            }
+        </>
+        
     )
 
 }

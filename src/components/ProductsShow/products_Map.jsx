@@ -3,19 +3,20 @@ import { useContext } from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
+
 export const Products_Map = ({data}) => {
 
     return(
 
         <div className="flex flex-wrap justify-center items-center">
             {
-                data.map(( {Id, Category, Name, Size, Price, Brand, Stock, Picture }) => {
+                data.map(( {id, Category, Name, Size, Price, Brand, Stock, Picture }) => {
                     return(
                         <div className="m-5 hover:-translate-y-5 transition-all">
                             
 
                             <div className="w-72 bg-slate-100  shadow-2xl shadow-ice">
-                                <Link to={`/products/detail/${Id}`}>
+                                <Link to={`/products/detail/${id}`}>
                                     <img className="p-2" src={Picture[0]}/>
                                 </Link>
                                 <div className="px-5 pb-5">

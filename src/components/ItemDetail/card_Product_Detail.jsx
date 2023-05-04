@@ -4,14 +4,18 @@ import {Quantity_Button} from "./quantity_Button"
 import {Buy_Button} from "../BuyButton/BuyButton"
 import { useContext } from "react"
 import { CartContext } from "../../Contexts/CartContext"
+import { collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, where } from "firebase/firestore"
+
 
 export const Item_Detail = ({products}) => {
-
-    let {Id, Category, Name, Size, Price, Brand, Stock, Picture } = products
-    
+        
     const [principalPicture, setPrincipalPicture] = useState(Picture[0])
 
     const { addToCart } = useContext(CartContext);
+
+    const {Id, Category, Name, Size, Price, Brand, Stock, Picture } = products
+
+    console.log(Name)
 
     return(
         <div className="border-4 border-black shadow-2xl shadow-black h-full w-2/3 bg-emerald-200 mt-10 mb-10 ml-20 mr-20">
