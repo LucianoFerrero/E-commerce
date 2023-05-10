@@ -38,12 +38,11 @@ export const Nav_Bar = () => {
 				</ul>
 			</nav>
 			<div className='justify-between flex justify-center items-center'>
-				<Shopping_Cart />
+				<Link to='/cart'>
+					<Shopping_Cart />
+				</Link>
 				<button className='p-2 text-black hover:text-white bg-[#73BFFE] border-2 border-black rounded-2xl mr-2'>
 					Iniciar Sesion
-				</button>
-				<button className='p-2 text-black hover:text-white bg-[#73BFFE] border-2 border-black rounded-2xl rounded-xl'>
-					Registrate
 				</button>
 			</div>
 		</div>

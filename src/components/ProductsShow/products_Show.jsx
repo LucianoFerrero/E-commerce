@@ -6,7 +6,7 @@ import { Products_Map } from './Products_Map'
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from 'react-router-dom'
 import { Loading } from '../Loading.jsx/Loading'
-import { collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, where } from "firebase/firestore"
+import { addDoc, collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, where } from "firebase/firestore"
 
 
 
@@ -41,7 +41,7 @@ export const Products_Show = ({encabezado}) =>{
     //         .finally( ()=> setIsLoading(false) )
     //     }
     // }, [category])
-
+    
     useEffect(() => {
         const dbFirestore = getFirestore()
         const queryCollection = collection(dbFirestore, 'productos')
@@ -54,7 +54,7 @@ export const Products_Show = ({encabezado}) =>{
         }else{
             const queryCollectionFiltered = query(
                 queryCollection,
-                where('category', '==', category)
+                where('Category', '==', category)
             )
 
             getDocs(queryCollectionFiltered)
@@ -64,18 +64,16 @@ export const Products_Show = ({encabezado}) =>{
         }
     }, [category])
 
-    useEffect(() => {
-        const dbFirestore = getFirestore()
-        const queryCollection = collection(dbFirestore, 'productos')
+    // useEffect(() => {
+    //     const dbFirestore = getFirestore()
+    //     const queryCollection = collection(dbFirestore, 'productos')
 
-        getDocs(queryCollection)
-        .then(res => setProductos( res.docs.map(producto => ( { id: producto.id, ...producto.data() } ))))
-        .catch( error => console.log(error))
-        .finally( () => setIsLoading(false))
-    }, [])
+    //     getDocs(queryCollection)
+    //     .then(res => setProductos( res.docs.map(producto => ( { id: producto.id, ...producto.data() } ))))
+    //     .catch( error => console.log(error))
+    //     .finally( () => setIsLoading(false))
+    // }, [])
 
-
-    
     console.log(productos)
     return(
         // <div className='w-full h-screen'>

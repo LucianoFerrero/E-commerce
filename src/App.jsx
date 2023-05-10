@@ -7,6 +7,7 @@ import { Item_Detail_Container } from './components/ItemDetailContainer/Item_Det
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { CartProvider } from './Contexts/CartContext'
 import { Cart } from './components/Cart/cart'
+import { CartContainer } from './components/CartContainer/CartConteiner'
 import { Loading } from './components/Loading.jsx/Loading'
 function App() {
 
@@ -19,10 +20,10 @@ function App() {
               <Route path='/home' element={<Item_List_Container/>}/> 
               <Route path='/products/category/:category' element={<Item_List_Container/>}/>
               <Route path='/products/detail/:pId' element={<Item_Detail_Container/>}/>
-              <Route path='*' element={ <Navigate to='/home'/>} />
+              <Route path='/cart' element={<CartContainer/>}/>
+              <Route path='*' element={ <Navigate to='/home'/>}/>
             </Routes>
           </BrowserRouter>
-          {/* <Cart></Cart> */}
       </div> 
       </CartProvider>
   )

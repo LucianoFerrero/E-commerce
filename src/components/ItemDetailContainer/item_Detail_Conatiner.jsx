@@ -9,6 +9,7 @@ export const Item_Detail_Container = () => {
 
     const [productos, setProductos] = useState([])
     const [producto, setProducto] = useState({})
+    const [item, setItem] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
 
@@ -22,23 +23,26 @@ export const Item_Detail_Container = () => {
     // }, [pId])
 
     useEffect(() => {
-        const dbFirestore = getFirestore()
-        const queryCollection = collection(dbFirestore, 'productos', pId)
+        const getProducto = async() =>{
+            const db = getFirestore()
+            const queryRef = doc(db, "productos", pId)
+            const response = await getDoc(queryRef)
+            const newItem = {
+                id: response.id,
+                ...response.data(),
+            };
+            console.log(newItem.id)
+            setTimeout(() => {
+                setItem(newItem)
+                setIsLoading(false)
+            }, 2000)
+        }
+        getProducto()
+    }, [pId])
 
-        const queryCollectionFiltered = query(
-            queryCollection,
-            where('id', '===', pId)
-        ) 
+    console.log(item)
 
-        getDocs(queryCollectionFiltered)
-            .then(res => setProducto( { id: res.id, ...res.data() } ))
-            .catch( error => console.log(error) )
-            .finally(() => setIsLoading(false))
-    }, [])
-
-    console.log(producto)
-
-    if(!producto){
+    if(!item){
         <Loading/>
     }
 
@@ -49,7 +53,7 @@ export const Item_Detail_Container = () => {
                     <Loading/>
                 : 
                     <div className="w-full h-full flex justify-center">
-                        <Item_Detail products={producto}/>
+                        <Item_Detail products={item}/>
                     </div>
             }
         </>
