@@ -1,6 +1,10 @@
 import {GrCart} from 'react-icons/gr'
+import { CartContext } from '../../Contexts/CartContext'
+import { useContext } from 'react';
 
 export const Shopping_Cart = (Products_count) => {
+
+    const { cartItems } = useContext(CartContext);
 
     return(
 
@@ -8,7 +12,7 @@ export const Shopping_Cart = (Products_count) => {
             <nav className=''>
                 <ul className='list-none'>
                     <li className='float-left '><GrCart className='w-7 h-7'/></li>
-                    <li className='float-left mr-10 '>0</li>
+                    <li className='float-left mr-10 '>{cartItems.length}</li>
                 </ul>
             </nav>
         </div>

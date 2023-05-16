@@ -8,7 +8,7 @@ export default {
       },
       fontFamily: {
         sans: [
-          "Press Start 2P', cursive",
+          "",
         ],
       },  
     },

@@ -4,9 +4,8 @@ import Ice from '../../assets/Ice.png'
 import { Shopping_Cart } from '../ShoppingCart/shopping_Cart'
 export const Nav_Bar = () => {
 
-
     return(
-		<div className="bg-white font-serif block flex justify-between p-4 shadow-lg shadow-ice">
+		<div className="bg-white block flex justify-between p-4 shadow-lg shadow-ice">
 				<div className='flex items-center'>
 					<Link to='/home'>
 						<img className='rounded-full w-16 hover:shadow-xl' src={Ice}/>
@@ -41,9 +40,11 @@ export const Nav_Bar = () => {
 				<Link to='/cart'>
 					<Shopping_Cart />
 				</Link>
+				<Link to='/login'>
 				<button className='p-2 text-black hover:text-white bg-[#73BFFE] border-2 border-black rounded-2xl mr-2'>
 					Iniciar Sesion
 				</button>
+				</Link>
 			</div>
 		</div>
 
