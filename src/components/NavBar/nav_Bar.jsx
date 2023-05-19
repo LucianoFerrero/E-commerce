@@ -1,9 +1,14 @@
 
-import { Link, NavLink, useParams } from 'react-router-dom'
+import { Link, NavLink} from 'react-router-dom'
 import Ice from '../../assets/Ice.png'
 import { Shopping_Cart } from '../ShoppingCart/shopping_Cart'
+import { FormContext } from '../../Contexts/FormContext'
+import { useContext } from 'react'
+import { LoginButton } from './loginButton'
 export const Nav_Bar = () => {
 
+	const {isLoged} = useContext(FormContext)
+	
     return(
 		<div className="bg-white block flex justify-between p-4 shadow-lg shadow-ice">
 				<div className='flex items-center'>
@@ -41,9 +46,7 @@ export const Nav_Bar = () => {
 					<Shopping_Cart />
 				</Link>
 				<Link to='/login'>
-				<button className='p-2 text-black hover:text-white bg-[#73BFFE] border-2 border-black rounded-2xl mr-2'>
-					Iniciar Sesion
-				</button>
+					<LoginButton disabled={isLoged}/>
 				</Link>
 			</div>
 		</div>

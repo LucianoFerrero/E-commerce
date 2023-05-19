@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 export const Shopping_Cart = (Products_count) => {
 
-    const { cartItems } = useContext(CartContext);
+    const { totalQuantity } = useContext(CartContext);
 
     return(
 
@@ -12,7 +12,7 @@ export const Shopping_Cart = (Products_count) => {
             <nav className=''>
                 <ul className='list-none'>
                     <li className='float-left '><GrCart className='w-7 h-7'/></li>
-                    <li className='float-left mr-10 '>{cartItems.length}</li>
+                    <li className='float-left mr-10 '>{totalQuantity()}</li>
                 </ul>
             </nav>
         </div>

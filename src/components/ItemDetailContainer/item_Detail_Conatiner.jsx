@@ -14,13 +14,6 @@ export const Item_Detail_Container = () => {
 
 
     const { pId } = useParams()
-    console.log(pId)
-
-    // useEffect(()=>{
-    //     setDetailProducts(products.find((product) => product.Id == pId))
-    //     loadProducts()
-    //     .finally( () => setIsLoAding(false))
-    // }, [pId])
 
     useEffect(() => {
         const getProducto = async() =>{
@@ -31,7 +24,6 @@ export const Item_Detail_Container = () => {
                 id: response.id,
                 ...response.data(),
             };
-            console.log(newItem.id)
             setTimeout(() => {
                 setItem(newItem)
                 setIsLoading(false)
@@ -39,8 +31,6 @@ export const Item_Detail_Container = () => {
         }
         getProducto()
     }, [pId])
-
-    console.log(item)
 
     if(!item){
         <Loading/>

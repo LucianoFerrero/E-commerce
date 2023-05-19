@@ -4,12 +4,14 @@ import { Item_List_Container } from './components/ItemListContainer/Item_List_Co
 import { Item_Detail_Container } from './components/ItemDetailContainer/Item_Detail_Conatiner'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { CartProvider } from './Contexts/CartContext'
+import { FormProvider } from './Contexts/FormContext'
 import { Cart } from './components/Cart/cart'
 import { Login } from './components/Login/Login'
 function App() {
 
   return (
     <CartProvider>
+    <FormProvider>
       <div className='bg-white flex flex-col justify-center'> 
           <BrowserRouter>
             <Nav_Bar/>
@@ -23,7 +25,8 @@ function App() {
             </Routes>
           </BrowserRouter>
       </div> 
-      </CartProvider>
+    </FormProvider>
+    </CartProvider>
   )
 }
 

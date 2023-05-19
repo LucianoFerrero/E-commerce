@@ -1,10 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext} from 'react';
 import Ice from '../../assets/Ice.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link, Navigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { FormContext } from '../../Contexts/FormContext';
+import { Nav_Bar } from '../NavBar/Nav_Bar';
+import { collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, setDoc, where } from "firebase/firestore"
+
 export const Login = () => {
 
-    const [userName, setUserName] = useState('')
-    const [userEmail, setUserEmail] = useState('')
-    const [userPhone, setUserPhone] = useState('')
+    const {formData, updateFormData, setIsLoged } = useContext(FormContext)
+
+    const { register, formState: { errors }, handleSubmit } = useForm()
+
+    const navigate = useNavigate()
+
+    const notify = () => toast('Bienvenido')
+
+    const handleLogin = (data, e) => {
+        e.preventDefault()
+        const updateData = {...formData, data}
+        updateFormData(updateData)
+        setIsLoged(true)
+        navigate("/home", { replace: true })
+    }
+
+//    const sendData = async () => {
+//         await setDoc(doc(db, 'Ordenes'), {
+//             formData
+//         })
+//     }
+
 
     return(
 
@@ -14,48 +42,50 @@ export const Login = () => {
             <p className="flex text-3xl inline-block justify-center col-span-1">Inicia Sesion</p> 
             
             <form className="grid text-lg flex col-span-2" 
-                onSubmit={ev => {
-                        ev.preventDefault()
-                        console.log({userName})
-                        console.log({userEmail}) 
-                        console.log({userPhone})
-                    }
-                }
+                onSubmit={handleSubmit(handleLogin)}
             >
     
                 Nombre:
-                <input 
-                    className="border border-black" 
+                <input className='border-2 border-black'
                     type="text" 
-                    name="name" 
-                    autoComplete='off'
-                    value={userName}
-                    onChange={ev => setUserName(ev.target.value)}
-                ></input>
-                Email:
-                <input 
-                    className="border border-black"
-                    type="email" 
-                    name="email" 
-                    autoComplete='off'
-                    onChange={ev => setUserEmail(ev.target.value)}
-                ></input>
-                Telefono:
-                <input 
-                    className="border border-black" 
-                    type="tel" 
-                    name="phone" 
-                    autoComplete='off'
-                    onChange={ev => setUserPhone(ev.target.value)}
-                ></input>
-                <button type="submit">
-                    Enviar
-                </button>
+                    {...register('Nombre', {
+                        required: true,
+                        maxLength: 10
+                    })}>
+                </input>
+                {errors.Nombre?.type === 'required' && <p>El campo es requerido</p>}
+                {errors.Nombre?.type === 'maxLength' && <p>Maximo 10 caracteres</p>}
 
+                
+                Email:
+                <input className='border-2 border-black' 
+                    type="email" 
+                    {...register('Email', {
+                        required: true,
+                    })}>
+                </input>
+                {errors.Email?.type === 'required' && <p>El campo es requerido</p>}                
+                Telefono:
+                <input className='border-2 border-black'
+                    type="phone" 
+                    {...register('Telefono', {
+                        required: true,
+                        maxLength: 10
+                    })}>
+                </input>
+                {errors.Telefono?.type === 'required' && <p>El campo es requerido</p>}
+                {errors.Nombre?.type === 'maxLength' && <p>Maximo 10 caracteres</p>}
+                
+                <div className='flex justify-center'>
+                    <button className='bg-ice border-2 border-black justify-center mt-5' 
+                        type="submit">
+                            Enviar
+                    </button>
+                </div>
             </form>
-            
         </div>
 
     )
+
 
 }
