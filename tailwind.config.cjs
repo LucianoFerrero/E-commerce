@@ -10,7 +10,10 @@ export default {
         sans: [
           "",
         ],
-      },  
+      }, 
+      backgroundImage: {
+        'IceI': "url('../assets/Ice.png')",
+      } 
     },
   },
   plugins: [],

@@ -1,17 +1,11 @@
- import { RingLoader } from "react-spinners"
- import { useEffect } from "react"
+import { useEffect } from "react";
 
- export const Loading = () => {
+export const Loading = () => {
+  useEffect(() => {});
 
-    useEffect(()=> {
-        
-    })
-
-
-    return(
-        <div>
-            <h1 className='text-3xl flex justify-center'>Loading... please wait</h1>
-        </div>
-    )
-     
- }
+  return (
+    <div>
+      <h1 className="text-3xl flex justify-center">Loading... please wait</h1>
+    </div>
+  );
+};
