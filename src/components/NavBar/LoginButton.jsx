@@ -1,4 +1,7 @@
 export const LoginButton = ({ disabled }) => {
+  if (disabled){
+    return <></>
+  }
   return (
     <button
       className="p-2 text-black hover:text-white bg-[#73BFFE] border-2 border-black rounded-2xl mr-2"
