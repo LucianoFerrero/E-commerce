@@ -5,7 +5,7 @@ import { FormContext } from "../../Contexts/FormContext";
 import { useContext } from "react";
 import { LoginButton } from "./loginButton";
 
-export const Nav_Bar = () => {
+const Nav_Bar = () => {
   const { isLoged } = useContext(FormContext);
 
   return (
@@ -43,3 +43,5 @@ export const Nav_Bar = () => {
     </div>
   );
 };
+
+export default Nav_Bar
