@@ -3,8 +3,7 @@ import Ice from "../../assets/Ice.png";
 import { Shopping_Cart } from "../ShoppingCart/shopping_Cart";
 import { FormContext } from "../../Contexts/FormContext";
 import { useContext } from "react";
-import { LoginButton } from "./loginButton";
-
+import { LoginButton } from "./LoginButton"
 const Nav_Bar = () => {
   const { isLoged } = useContext(FormContext);
 
