@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Products_Map } from "./Products_Map";
+import { Products_Map } from "./products_Map"
 import { useParams } from "react-router-dom";
 import { Loading } from "../Loading.jsx/Loading";
 import {
