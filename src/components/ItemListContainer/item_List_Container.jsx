@@ -1,4 +1,4 @@
-import { Products_Show } from "../ProductsShow/Products_Show";
+import { Products_Show } from "../ProductsShow/products_Show"
 const Item_List_Container = () => {
   return (
     <div>
