@@ -8,7 +8,7 @@ export const Products_Map = ({ data }) => {
           <div className="m-5 hover:-translate-y-5 transition-all">
             <div className="w-72 bg-slate-100  shadow-2xl shadow-ice">
               <Link to={`/products/detail/${id}`}>
-                <img className="p-2 w-[288px] h-[356px]" src={Picture[0]} />
+                <img className="p-2 w-[268px] h-[336px]" src={Picture[0]} />
               </Link>
               <div className="px-5 pb-5">
                 <a href="#">
