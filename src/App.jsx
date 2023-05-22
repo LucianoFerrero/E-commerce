@@ -1,12 +1,12 @@
 import "./App.css";
 import Nav_Bar from "./components/NavBar/nav_Bar"
-import { Item_List_Container } from "./components/ItemListContainer/Item_List_Container";
-import { Item_Detail_Container } from "./components/ItemDetailContainer/Item_Detail_Conatiner";
+import Item_List_Container  from "./components/ItemListContainer/Item_List_Container";
+import Item_Detail_Container from "./components/ItemDetailContainer/Item_Detail_Conatiner";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { CartProvider } from "./Contexts/CartContext";
 import { FormProvider } from "./Contexts/FormContext";
-import { Cart } from "./components/Cart/cart";
-import { Login } from "./components/Login/Login";
+import Cart from "./components/Cart/cart";
+import Login from "./components/Login/Login";
 function App() {
   return (
     <CartProvider>

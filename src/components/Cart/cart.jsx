@@ -9,7 +9,7 @@ import {
   getFirestore,
 } from "firebase/firestore";
 
-export const Cart = () => {
+const Cart = () => {
   const [id, setId] = useState("");
 
   const Id = id;
@@ -126,3 +126,5 @@ export const Cart = () => {
     </div>
   );
 };
+
+export default Cart

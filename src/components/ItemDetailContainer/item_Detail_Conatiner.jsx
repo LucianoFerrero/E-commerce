@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Loading } from "../Loading.jsx/Loading";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 
-export const Item_Detail_Container = () => {
+const Item_Detail_Container = () => {
   const [item, setItem] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,3 +43,5 @@ export const Item_Detail_Container = () => {
     </>
   );
 };
+
+export default Item_Detail_Container

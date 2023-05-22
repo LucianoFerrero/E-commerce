@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FormContext } from "../../Contexts/FormContext";
 import swal from "sweetalert";
-export const Login = () => {
+const Login = () => {
   const { formData, updateFormData, setIsLoged } = useContext(FormContext);
 
   const {
@@ -85,3 +85,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login
