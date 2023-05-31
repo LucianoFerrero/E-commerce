@@ -5,7 +5,7 @@ export const Products_Map = ({ data }) => {
     <div className="flex flex-wrap justify-center items-center">
       {data.map(({ id, Category, Name, Price, Brand, Stock, Picture }) => {
         return (
-          <div className="m-5 hover:-translate-y-5 transition-all">
+          <div className="m-5 hover:-translate-y-5 transition-all" key={id}>
             <div className="w-72 bg-slate-100  shadow-2xl shadow-ice">
               <Link to={`/products/detail/${id}`}>
                 <img className="p-2 w-[268px] h-[336px]" src={Picture[0]} />
@@ -18,9 +18,9 @@ export const Products_Map = ({ data }) => {
                 </a>
                 <div className="flex items-center mt-2.5 mb-5 justifiy-between text-black">
                   <nav className="list-none">
-                    <li>Marca: {Brand}</li>
-                    <li>Categoria: {Category}</li>
-                    <li>Stock: {Stock}</li>
+                    <li key={Brand}>Marca: {Brand}</li>
+                    <li key={Category}>Categoria: {Category}</li>
+                    <li key={Stock}>Stock: {Stock}</li>
                   </nav>
                 </div>
                 <div className="flex items-center justify-between">

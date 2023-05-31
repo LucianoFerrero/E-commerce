@@ -41,7 +41,7 @@ const Cart = () => {
             cleanCart();
             swal({
               title: "Compra exitosa!",
-              text: "Gracias por tu compra",
+              text: `Gracias por tu compra \n Id de tu compra: ${id}`,
               icon: "success",
               background: "#73BFFE",
             });
@@ -55,6 +55,8 @@ const Cart = () => {
       });
     }
   };
+
+  console.log(id)
 
   return (
     <div className="bg-white w-full h-auto flex justify-center p-5">
