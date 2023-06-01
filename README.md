@@ -1,6 +1,6 @@
 # Proyecto Final Coderhouse React.Js (IceDrip)
 
-## ![Demo del Sitio Web]git (src/assets/Grabacion.gif)
+## ![Demo del Sitio Web](src/assets/Grabacion.gif)
 
 
 ## Tabla de Infomracion
