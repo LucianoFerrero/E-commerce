@@ -45,6 +45,8 @@ const Login = () => {
         Nombre:
         <input
           className="border-2 border-black"
+          placeholder="Introduce tu nombre"
+          autoComplete="off"
           type="text"
           {...register("Nombre", {
             required: true,
@@ -56,6 +58,8 @@ const Login = () => {
         Email:
         <input
           className="border-2 border-black"
+          placeholder="Introduce tu email"
+          autoComplete="off"
           type="email"
           {...register("Email", {
             required: true,
@@ -65,6 +69,8 @@ const Login = () => {
         Telefono:
         <input
           className="border-2 border-black"
+          placeholder="Introduce tu telefono"
+          autoComplete="off"
           type="phone"
           {...register("Telefono", {
             required: true,

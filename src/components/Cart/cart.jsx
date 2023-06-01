@@ -10,9 +10,6 @@ import {
 } from "firebase/firestore";
 
 const Cart = () => {
-  const [id, setId] = useState("");
-
-  const Id = id;
 
   const { cartItems, removeFromCart, totalPrice, totalQuantity, cleanCart } =
     useContext(CartContext);
@@ -34,18 +31,19 @@ const Cart = () => {
       const ordersCollection = collection(dbFirestore, "Ordenes");
 
       addDoc(ordersCollection, order)
-        .then((resp) => setId(resp.id))
-        .catch((err) => console.log(err))
-        .finally(
+        .then((resp) => {
           setTimeout(() => {
             cleanCart();
             swal({
               title: "Compra exitosa!",
-              text: `Gracias por tu compra \n Id de tu compra: ${id}`,
+              text: `Gracias por tu compra \n Id de tu compra: ${resp.id}`,
               icon: "success",
               background: "#73BFFE",
             });
           }, 1000)
+        })
+        .catch((err) => console.log(err))
+        .finally(
         );
     } else {
       swal({
@@ -55,8 +53,6 @@ const Cart = () => {
       });
     }
   };
-
-  console.log(id)
 
   return (
     <div className="bg-white w-full h-auto flex justify-center p-5">
@@ -72,11 +68,6 @@ const Cart = () => {
                   Explorar tienda
                 </button>
               </Link>
-            </li>
-            <li>
-              {id.length !== 0 && (
-                <h1 className="mt-5 text-xl">Id de la compra: {id}</h1>
-              )}
             </li>
           </ul>
         </div>
